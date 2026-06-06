@@ -35,3 +35,28 @@ Mermaid interpreta texto plano para renderizar gráficos directamente en la inte
 
 **Declaración de uso de IA**
 *(Nota: El formato y la generación de la sintaxis base de los diagramas de este ADR contaron con asistencia de Inteligencia Artificial como herramienta de apoyo a la redacción técnica, siendo el análisis arquitectónico, los componentes del patrón MVC y la revisión de exactitud de autoría propia).*
+
+#### 1. Vista Lógica
+Muestra la organización de los componentes de software (clases e interfaces) basados en el patrón MVC.
+
+```mermaid
+classDiagram
+    class TaskController {
+        +Index() ActionResult
+        +Create(TaskItem) ActionResult
+        +MarkAsDone(int id) ActionResult
+    }
+    class TaskService {
+        -List~TaskItem~ _taskMemoryDB
+        +GetAllTasks() List~TaskItem~
+        +CreateTask(TaskItem) void
+        +CompleteTask(int id) void
+    }
+    class TaskItem {
+        +Id: int
+        +Title: string
+        +ExperiencePoints: int
+        +IsCompleted: bool
+    }
+    TaskController --> TaskService : Delega lógica de negocio a
+    TaskService --> TaskItem : Gestiona colección de
