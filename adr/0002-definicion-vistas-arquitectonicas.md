@@ -80,3 +80,20 @@ sequenceDiagram
     S-->>C: Operación exitosa
     C-->>V: Redirect to Index (Vista actualizada)
     V-->>Usuario: Muestra lista con nueva tarea
+
+    #### 3. Vista Física
+Define la topología del hardware donde el sistema se ejecuta (actualmente como prototipo).
+
+```mermaid
+graph TD
+    subgraph "Nodo Cliente"
+        Browser[Dispositivo del Usuario\n(Navegador Web)]
+    end
+    
+    subgraph "Nodo Servidor"
+        CPU[Procesador Servidor]
+        RAM[Memoria RAM\n(Persistencia Efímera)]
+    end
+    
+    Browser -- "Red (HTTPS)" --> CPU
+    CPU -- "Lectura / Escritura" --> RAM
