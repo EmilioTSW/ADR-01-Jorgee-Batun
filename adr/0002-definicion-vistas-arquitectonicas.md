@@ -60,3 +60,23 @@ classDiagram
     }
     TaskController --> TaskService : Delega lógica de negocio a
     TaskService --> TaskItem : Gestiona colección de
+
+    #### 2. Vista de Procesos
+Muestra cómo el sistema interactúa en tiempo de ejecución para cumplir una función (crear una nueva misión/tarea).
+
+```mermaid
+sequenceDiagram
+    actor Usuario
+    participant V as View (HTML/CSS)
+    participant C as TaskController
+    participant S as TaskService
+    participant M as Memoria RAM
+    
+    Usuario->>V: Llena formulario "Nueva Misión"
+    V->>C: HTTP POST /Task/Create
+    C->>S: CreateTask(newTask)
+    S->>M: Agrega elemento a List~TaskItem~
+    M-->>S: Confirmación de guardado
+    S-->>C: Operación exitosa
+    C-->>V: Redirect to Index (Vista actualizada)
+    V-->>Usuario: Muestra lista con nueva tarea
