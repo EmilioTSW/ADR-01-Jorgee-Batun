@@ -97,3 +97,24 @@ graph TD
     
     Browser -- "Red (HTTPS)" --> CPU
     CPU -- "Lectura / Escritura" --> RAM
+
+    #### 4. Vista de Despliegue
+Muestra cómo los artefactos de software (la aplicación) se instalan en la infraestructura física.
+
+```mermaid
+flowchart LR
+    subgraph "Dispositivo Cliente"
+        OS_Client[Sistema Operativo]
+        Nav[Navegador Moderno]
+    end
+    
+    subgraph "Servidor de Aplicaciones"
+        OS_Server[Windows Server / Linux]
+        Host[Servidor Kestrel / IIS]
+        App[TaskQuest App \n ASP.NET MVC .dll]
+    end
+    
+    OS_Client --> Nav
+    OS_Server --> Host
+    Host --> App
+    Nav -- "Peticiones HTTP/HTTPS" <--> Host
