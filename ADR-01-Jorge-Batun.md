@@ -78,3 +78,16 @@ sequenceDiagram
     V-->>Usuario: Muestra lista actualizada
     TaskController --> TaskService : Delega logica a
     TaskService --> TaskItem : Gestiona datos de
+
+graph TD
+    subgraph Nodo Cliente
+        Browser[Navegador Web del Usuario]
+    end
+    
+    subgraph Nodo Servidor
+        CPU[Procesador Servidor]
+        RAM[Memoria RAM Temporal]
+    end
+    
+    Browser -- Red HTTPS --> CPU
+    CPU -- Lectura y Escritura --> RAM
