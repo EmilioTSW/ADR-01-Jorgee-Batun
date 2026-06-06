@@ -60,6 +60,9 @@ classDiagram
     }
     TaskController --> TaskService : Delega lógica de negocio a
     TaskService --> TaskItem : Gestiona colección de
+
+---
+
 #### 1. Vista Lógica
 Muestra la organización de los componentes de software (clases e interfaces) basados en el patrón MVC.
 
@@ -71,8 +74,8 @@ classDiagram
         +MarkAsDone(int id) ActionResult
     }
     class TaskService {
-        -List~TaskItem~ _taskMemoryDB
-        +GetAllTasks() List~TaskItem~
+        -List _taskMemoryDB
+        +GetAllTasks() List
         +CreateTask(TaskItem) void
         +CompleteTask(int id) void
     }
@@ -82,5 +85,5 @@ classDiagram
         +ExperiencePoints: int
         +IsCompleted: bool
     }
-    TaskController --> TaskService : Delega lógica de negocio a
-    TaskService --> TaskItem : Gestiona colección de
+    TaskController --> TaskService : Delega logica a
+    TaskService --> TaskItem : Gestiona datos de
